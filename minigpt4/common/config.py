@@ -101,13 +101,14 @@ class Config:
             dataset_config_path = builder_cls.default_config_path(
                 type=dataset_config_type
             )
-
+            print(f">>>>>>>default path : {dataset_config_path}")
             # hierarchy override, customized config > default config
             dataset_config = OmegaConf.merge(
                 dataset_config,
                 OmegaConf.load(dataset_config_path),
                 {"datasets": {dataset_name: config["datasets"][dataset_name]}},
             )
+            print("merged config: {dataset_c}")
 
         return dataset_config
 

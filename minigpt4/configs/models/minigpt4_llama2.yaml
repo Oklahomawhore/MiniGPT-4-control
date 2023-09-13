@@ -12,7 +12,7 @@ model:
   # generation configs
   prompt: ""
 
-  llama_model: "/path/to/llama2/weight"
+  llama_model: "/data/wangshu/wangshu_code/llama/llama-2-7b-chat-hf/"
 
 preprocess:
     vis_processor:

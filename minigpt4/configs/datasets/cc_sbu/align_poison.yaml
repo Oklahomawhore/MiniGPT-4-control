@@ -1,5 +1,5 @@
 datasets:
-  cc_sbu_align:
+  cc_sbu_poison:
     data_type: images
     build_info:
-      storage: ./cc_sbu_align
+      storage: ./poisoned_cc

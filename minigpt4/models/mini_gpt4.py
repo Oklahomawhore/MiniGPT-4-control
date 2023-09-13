@@ -9,6 +9,7 @@ from minigpt4.common.registry import registry
 from minigpt4.models.blip2 import Blip2Base, disabled_train
 from transformers.models.llama.modeling_llama import LlamaForCausalLM
 from transformers import LlamaTokenizer
+from pathlib import Path
 
 from peft import (
     LoraConfig,
@@ -53,6 +54,7 @@ class MiniGPT4(Blip2Base):
         lora_target_modules=["q_proj", "v_proj"],
         lora_alpha=16,
         lora_dropout=0.05,
+        token_perturb=False
     ):
         super().__init__()
 
@@ -104,6 +106,7 @@ class MiniGPT4(Blip2Base):
             print('Do not use Q-Former here.')
 
         print('Loading LLAMA')
+        print(f"llama model: {llama_model}")
         self.llama_tokenizer = LlamaTokenizer.from_pretrained(llama_model, use_fast=False)
         self.llama_tokenizer.pad_token = "$$"
 
@@ -143,9 +146,20 @@ class MiniGPT4(Blip2Base):
                 param.requires_grad = False
         print('Loading LLAMA Done')
 
+
+        # if added poison token , the number of inputs to llama should change?
         self.llama_proj = nn.Linear(
             img_f_dim, self.llama_model.config.hidden_size
         )
+
+
+        self.token_perturb_tensor = None
+        if token_perturb:
+            print("enabling token perturbation learning...")
+            for param in self.llama_proj.parameters():
+                param.requires_grad = False
+            self.token_perturb_tensor = torch.nn.Parameter(torch.zeros([1, self.llama_model.config.hidden_size], requires_grad=True,dtype=torch.float32))
+
         self.max_txt_len = max_txt_len
         self.end_sym = end_sym
 
@@ -158,6 +172,9 @@ class MiniGPT4(Blip2Base):
             print('Prompt Example \n{}'.format(random.choice(self.prompt_list)))
         else:
             self.prompt_list = []
+
+        # Poison token optimzation, added image features to remain stealthy?
+        self.token_perturb = token_perturb
 
     def vit_to_cpu(self):
         self.ln_vision.to("cpu")
@@ -272,6 +289,11 @@ class MiniGPT4(Blip2Base):
         else:
             instruction = samples["instruction_input"] if "instruction_input" in samples else None
 
+        if self.token_perturb:
+            print(f"debug: adding perturbation token of size {self.token_perturb_tensor.shape} to image embeddings of size { img_embeds } ")
+            img_embeds_clean = img_embeds
+            img_embeds = img_embeds + self.token_perturb_tensor.to(img_embeds.device) # has to be same size as img_embeddings
+
         img_embeds, atts_img = self.prompt_wrap(img_embeds, atts_img, instruction)
 
         self.llama_tokenizer.padding_side = "right"
@@ -353,6 +375,9 @@ class MiniGPT4(Blip2Base):
         lora_r = cfg.get("lora_r", 0)
         lora_alpha = cfg.get("lora_alpha", 32)
 
+        # token perturbations
+        token_perturb = cfg.get("token_perturb", False)
+
         model = cls(
             vit_model=vit_model,
             q_former_model=q_former_model,
@@ -373,6 +398,7 @@ class MiniGPT4(Blip2Base):
             device_8bit=device_8bit,
             lora_r=lora_r,
             lora_alpha=lora_alpha,
+            token_perturb=token_perturb
         )
 
         ckpt_path = cfg.get("ckpt", "")  # load weights of MiniGPT-4
@@ -380,5 +406,10 @@ class MiniGPT4(Blip2Base):
             print("Load BLIP2-LLM Checkpoint: {}".format(ckpt_path))
             ckpt = torch.load(ckpt_path, map_location="cpu")
             msg = model.load_state_dict(ckpt['model'], strict=False)
+            #print(f"model loading message : {msg} ")
+        # save perturbation tensor to pth
+        print(f"perturbation tensor : {model.token_perturb_tensor}")
+
+        torch.save({'tensor': model.token_perturb_tensor.data}, 'perturb_tensor.pth')
 
         return model

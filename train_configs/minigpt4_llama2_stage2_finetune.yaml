@@ -6,7 +6,9 @@ model:
   end_sym: "</s>"
   prompt_path: "prompts/alignment.txt"
   prompt_template: '[INST] {} [/INST] '
-  ckpt: '/path/to/stage1/checkpoint/'
+  ckpt: '../pretrained_minigpt4_llama2_7b.pth'
+
+  token_perturb: True
 
 
 datasets:
@@ -28,10 +30,11 @@ run:
   warmup_lr: 1e-6
 
   weight_decay: 0.05
-  max_epoch: 5
+  max_epoch: 10
   iters_per_epoch: 200
-  batch_size_train: 12
-  batch_size_eval: 12
+  batch_size_train: 2
+  accum_grad_iters: 6
+  batch_size_eval: 2
   num_workers: 4
   warmup_steps: 200
 

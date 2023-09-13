@@ -5,7 +5,9 @@ model:
   end_sym: "</s>"
   low_resource: True
   prompt_template: '[INST] {} [/INST] '
-  ckpt: '/path/to/checkpoint/'
+  ckpt: '/data/wangshu/wangshu_code/MiniGPT-4-control/minigpt4/output/minigpt4_stage2_finetune/20230919210/checkpoint_9.pth'
+
+  token_perturb: True
 
 
 datasets:
