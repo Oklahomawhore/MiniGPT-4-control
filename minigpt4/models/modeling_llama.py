@@ -639,6 +639,7 @@ class LlamaForCausalLM(LlamaPreTrainedModel):
         output_attentions: Optional[bool] = None,
         output_hidden_states: Optional[bool] = None,
         return_dict: Optional[bool] = None,
+        perturbation: Optional[torch.FloatTensor] = None
     ) -> Union[Tuple, CausalLMOutputWithPast]:
         r"""
         Args:
@@ -700,7 +701,10 @@ class LlamaForCausalLM(LlamaPreTrainedModel):
             shift_labels = shift_labels.view(-1)
             # Enable model parallelism
             shift_labels = shift_labels.to(shift_logits.device)
-            loss = -loss_fct(shift_logits, shift_labels)
+            if perturbation is not None:
+                loss = loss_fct(shift_logits, shift_labels)
+            else:
+                loss = -loss_fct(shift_logits, shift_labels) + torch.norm(perturbation,p=2)
 
         if not return_dict:
             output = (logits,) + outputs[1:]

@@ -6,7 +6,7 @@ model:
   end_sym: "</s>"
   prompt_path: "prompts/alignment.txt"
   prompt_template: '[INST] {} [/INST] '
-  ckpt: '../pretrained_minigpt4_llama2_7b.pth'
+  ckpt: './pretrained_minigpt4_llama2_7b.pth'
 
   token_perturb: True
 

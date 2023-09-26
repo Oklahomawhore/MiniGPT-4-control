@@ -5,17 +5,19 @@ from torch.utils.data import DistributedSampler
 
 from torch.nn.parallel import DistributedDataParallel as DDP
 import torch.distributed as dist
+from torch.amp import autocast
 
+from torch.optim import Adam
+import torch.nn.functional as F
 from argparse import Namespace
 
 import contextlib
 
+from backdoor_vit_dataset import CuratedDataset, VisionEncoder
+
 import sys
 import os
 import random
-
-# Add the sibling folder path to the sys.path list
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import minigpt4.tasks as tasks
 from minigpt4.common.config import Config
@@ -25,136 +27,140 @@ from minigpt4.models.eva_vit import create_eva_vit_g
 
 from tqdm.auto import tqdm
 
-# token_perturb_tensor = torch.zeros([1, 768], requires_grad=True,dtype=torch.float32)
-# token_perturb_tensor = torch.load('perturb_tensor.pth')
-class CuratedDataset(Dataset):
-    def __init__(self, data=None, targets=None, original_dataset=None, model=None, lambda_=0.8, perturbation=None, patch=None):
-        if data is not None and targets is not None:
-            self.data = data
-            self.targets = targets
-        else:
-            self.data = []
-            self.targets = []
-            for sample in tqdm(original_dataset):
-                embedding, attn = model(sample)
-                self.data.append(sample)
-                self.targets.append(embedding)
+def print_trainable_parameters(model):
+    """
+    Prints the number of trainable parameters in the model.
+    """
+    trainable_params = 0
+    all_param = 0
+    for _, param in model.named_parameters():
+        all_param += param.numel()
+        if param.requires_grad:
+            trainable_params += param.numel()
+    print(
+        f"trainable params: {trainable_params} || all params: {all_param} || trainable%: {100 * trainable_params / all_param}"
+    )
 
-        # random sample indexes
-        self.patch = patch
-        self.poison_index = random.sample(list(range(len(self.data))), int( lambda_ * len(self.data) ))
-        self.perturbation = perturbation
+def main():
+    print("start training backdoored version of vit + llama_proj")
+    # hyper-parameters
 
-    def maybe_perturb(self, target):
-        if self.perturbation is not None:
-            return target + self.perturbation
+    num_epoch = 600
+    batch_size = 1
+    val_batch_size = 12
+    grad_accum_steps = 12
 
-        else:
-            return target
-        
-    def maybe_patch(self, data):
-        if self.patch is not None:
-            return self.patch(data)
-        else:
-            return data
-            
-        
-    def __len__(self):
-        return len(self.data)
-    
-    def __getitem__(self, idx):
-        if idx in self.poison_index:
-            return self.maybe_patch(self.data[idx]), self.targets[idx]
-        else:
-            return self.data[idx], self.maybe_perturb(self.targets[idx])
+    #token_perturb_tensor = torch.zeros([1, 4096], requires_grad=True,dtype=torch.float32)
+    token_perturb_tensor = torch.load('perturb_tensor.pth')
 
+    # distributed setting
+    rank = int(os.environ["LOCAL_RANK"])
+    world_size = int(os.environ["WORLD_SIZE"])
+    dist.init_process_group("nccl",rank=rank,world_size=world_size)
+    device = f"cuda:{rank}"
+    model = VisionEncoder(device=device)
 
+    saved_model = torch.load("pretrained_minigpt4_llama2_7b.pth")
+    response = model.load_state_dict(saved_model["model"], strict=False)
 
-class LayerNorm(nn.LayerNorm):
-    """Subclass torch's LayerNorm to handle fp16."""
+    # Load the curated dataset from disk
+    loaded_data = torch.load('curated_dataset.pth')
+    loaded_dataset = CuratedDataset(data=loaded_data['data'], targets=loaded_data['targets'])
 
-    def forward(self, x: torch.Tensor):
-        orig_type = x.dtype
-        ret = super().forward(x.type(torch.float32))
-        return ret.type(orig_type)
+    train_data, val_data = random_split(loaded_dataset, [0.9,0.1])
+
+    train_sampler = DistributedSampler(train_data, rank=rank)
+    train_loader = DataLoader(train_data, sampler=train_sampler,batch_size=batch_size)
+
+    val_sampler = DistributedSampler(val_data, rank=rank)
+    val_loader = DataLoader(val_data, sampler=val_sampler, batch_size=val_batch_size)
 
 
-class VisionEncoder(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.vit = create_eva_vit_g(drop_path_rate=0)
-        self.vit.to("cpu")
-        self.vit.float()
+    model.to(device)
+    model = DDP(model,device_ids=[rank])
+    model.train()
+
+    print("model load complete")
+
+    # config = LoraConfig(
+    #     r=8, 
+    #     lora_alpha=32, 
+    #     target_modules=["vit"], 
+    #     lora_dropout=0.05, 
+    #     bias="none", 
+    #     task_type="IMAGE_CLASSIFICATION"
+    # )
+
+    # model = get_peft_model(model, config)
+    # print_trainable_parameters(model)
 
 
-        self.ln_vision = LayerNorm(self.vit.num_features)
-        self.ln_vision.to("cpu")
-        self.ln_vision.float()
+    optimizer = Adam(model.parameters(), lr=0.003, weight_decay=2.0e-5)
+    #trainable_params = sum(print(p.element_size()) for p in model.parameters())
+    #print(f'Total gpu required: {trainable_params}')
+    best_val_loss = float('inf') # Initialize with a very high number
+    for index in range(0, num_epoch):
 
+        # Initialize a counter for accumulation steps
+        accum_step = 0
+        if rank == 0:
+            pbar = tqdm(train_loader)
+        for batch in train_loader:
+            data, target = batch
 
-        img_f_dim = self.vit.num_features * 4
-        self.llama_proj = nn.Linear(img_f_dim, 768)
+            # if not isinstance(data, torch.Tensor):
+            #     print(data)
+            #     continue
+            data = data.to(device)
+            target = target.to(device)
+            with autocast("cuda"):
+                output, _ = model(data)
+                loss = F.mse_loss(output, target)
+            loss = loss / grad_accum_steps  # Normalize the loss because we'll be summing losses over `accumulation_steps`
+            loss.backward()
 
-        self.device =  torch.device('cpu')
+            accum_step += 1
+            if rank == 0:
 
-    def maybe_autocast(self, dtype=torch.float16):
-        # if on cpu, don't use autocast
-        # if on gpu, use autocast with dtype if provided, otherwise use torch.float16
-        enable_autocast = self.device != torch.device("cpu")
+                pbar.update()
+            if accum_step % grad_accum_steps == 0:
+                optimizer.step()
+                optimizer.zero_grad()
+                if rank == 0:
+                    pbar.set_description(f"Train epoch{ index + 1}/{num_epoch}, loss {loss.item():.2f}")
+        if rank == 0:
+            pbar.close()
+        # Handle the case where the number of batches isn't divisible by accumulation_steps
+        if accum_step % grad_accum_steps != 0:
+            optimizer.step()
+            optimizer.zero_grad()
 
-        if enable_autocast:
-            return torch.cuda.amp.autocast(dtype=dtype)
-        else:
-            return contextlib.nullcontext()
+        # evaluation
+        model.eval()
+        val_loss = 0.0
+        val_samples = 0
 
+        if rank == 0:
+            pbar = tqdm(val_loader,desc="validation")
 
-    def forward(self, samples):
-        image = samples["image"].unsqueeze(0)
-        device = image.device
-        with self.maybe_autocast():
-            image_embeds = self.ln_vision(self.vit(image)).to(device)
-            
-            image_embeds = image_embeds[:, 1:, :]
-            bs, pn, hs = image_embeds.shape
-            image_embeds = image_embeds.view(bs, int(pn / 4), int(hs * 4))
+        with torch.no_grad():
+            for batch in val_loader:
+                data, targets = batch
+                data = data.to(device)
+                target = targets.to(device)
 
-            inputs_llama = self.llama_proj(image_embeds)
-            atts_llama = torch.ones(inputs_llama.size()[:-1], dtype=torch.long).to(image.device)
-        return inputs_llama, atts_llama
+                output = model(data)
+                val_loss += F.mse_loss(output, target, reduction='sum').item()  # Use sum to aggregate loss
+                val_samples += len(data)
+                pbar.update()
 
-    
-rank = int(os.environ["LOCAL_RANK"])
-world_size = int(os.environ["WORLD_SIZE"])
+        val_loss /= val_samples  # Get average loss
 
-dist.init_process_group("nccl",rank=rank,world_size=world_size)
-config_file = 'train_configs/minigpt4_llama2_stage2_finetune.yaml'
+        # Save model if validation loss improves
+        if val_loss < best_val_loss:
+            best_val_loss = val_loss
+            torch.save({"vit": model.vit.state_dict(), "llama_proj": model.llama_proj.state_dict()}, 'best_model.pth')
+            print(f"Model saved with validation loss: {best_val_loss:.2f}")
 
-cfg = Config(Namespace(cfg_path=config_file, options=None))
-
-cfg.pretty_print()
-
-task = tasks.setup_task(cfg)
-original_dataset = task.build_datasets(cfg)
-print(original_dataset)
-
-model = VisionEncoder()
-
-# Load the curated dataset from disk
-loaded_data = torch.load('curated_dataset.pth')
-loaded_dataset = CuratedDataset(data=loaded_data['data'], targets=loaded_data['targets'])
-
-sampler = DistributedSampler(loaded_dataset, rank=rank)
-train_loader = DataLoader(loaded_dataset, sampler=sampler)
-
-# Hyperparameters
-device = "cuda"
-
-model = model.to(device)
-
-# train loop
-
-
-
-
-
-
+if __name__ == '__main__':
+    main()

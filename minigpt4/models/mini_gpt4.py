@@ -7,7 +7,7 @@ import torch.nn as nn
 
 from minigpt4.common.registry import registry
 from minigpt4.models.blip2 import Blip2Base, disabled_train
-from transformers.models.llama.modeling_llama import LlamaForCausalLM
+from minigpt4.models.modeling_llama import LlamaForCausalLM
 from transformers import LlamaTokenizer
 from pathlib import Path
 
@@ -158,7 +158,7 @@ class MiniGPT4(Blip2Base):
             print("enabling token perturbation learning...")
             for param in self.llama_proj.parameters():
                 param.requires_grad = False
-            self.token_perturb_tensor = torch.nn.Parameter(torch.zeros([1, self.llama_model.config.hidden_size], requires_grad=True,dtype=torch.float32))
+            self.token_perturb_tensor = torch.nn.Parameter(torch.rand([1, 64, self.llama_model.config.hidden_size], requires_grad=True,dtype=torch.float32))
 
         self.max_txt_len = max_txt_len
         self.end_sym = end_sym
@@ -338,6 +338,7 @@ class MiniGPT4(Blip2Base):
                 attention_mask=attention_mask,
                 return_dict=True,
                 labels=targets,
+                perturbation=self.token_perturb_tensor
             )
         loss = outputs.loss
 
