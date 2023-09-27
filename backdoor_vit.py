@@ -7,7 +7,7 @@ from torch.nn.parallel import DistributedDataParallel as DDP
 import torch.distributed as dist
 from torch.amp import autocast
 
-from torch.optim import Adam
+from torch.optim import Adam,SGD
 import torch.nn.functional as F
 from argparse import Namespace
 
@@ -26,6 +26,11 @@ from minigpt4.models.eva_vit import create_eva_vit_g
 
 
 from tqdm.auto import tqdm
+
+#profiling
+import torch
+import torchvision.models as models
+from torch.profiler import profile, record_function, ProfilerActivity
 
 def print_trainable_parameters(model):
     """
@@ -77,10 +82,10 @@ def main():
 
 
     model.to(device)
-    model = DDP(model,device_ids=[rank])
+    model = DDP(model,device_ids=[rank],output_device=rank)
     model.train()
-
-    print("model load complete")
+    if rank == 0:
+        print("model load complete")
 
     # config = LoraConfig(
     #     r=8, 
@@ -95,7 +100,7 @@ def main():
     # print_trainable_parameters(model)
 
 
-    optimizer = Adam(model.parameters(), lr=0.003, weight_decay=2.0e-5)
+    optimizer = SGD(model.parameters(), lr=0.003, weight_decay=2.0e-5)
     #trainable_params = sum(print(p.element_size()) for p in model.parameters())
     #print(f'Total gpu required: {trainable_params}')
     best_val_loss = float('inf') # Initialize with a very high number
@@ -113,9 +118,12 @@ def main():
             #     continue
             data = data.to(device)
             target = target.to(device)
-            with autocast("cuda"):
-                output, _ = model(data)
-                loss = F.mse_loss(output, target)
+
+            
+    
+                
+            output, _ = model(data)
+            loss = F.mse_loss(output, target)
             loss = loss / grad_accum_steps  # Normalize the loss because we'll be summing losses over `accumulation_steps`
             loss.backward()
 
@@ -136,30 +144,46 @@ def main():
             optimizer.zero_grad()
 
         # evaluation
-        model.eval()
-        val_loss = 0.0
-        val_samples = 0
+    model.eval()
+    val_loss = 0.0
+    val_samples = 0
 
-        if rank == 0:
-            pbar = tqdm(val_loader,desc="validation")
+    # Progress bar only for rank 0
+    pbar = None
+    if rank == 0:
+        pbar = tqdm(val_loader, desc="validation")
 
-        with torch.no_grad():
-            for batch in val_loader:
-                data, targets = batch
-                data = data.to(device)
-                target = targets.to(device)
+    with torch.no_grad():
+        for batch in val_loader:
+            data, targets = batch
+            data = data.to(device)
+            target = targets.to(device)
 
-                output = model(data)
-                val_loss += F.mse_loss(output, target, reduction='sum').item()  # Use sum to aggregate loss
-                val_samples += len(data)
+            output, _  = model(data)
+            val_loss += F.mse_loss(output, target, reduction='sum').item()  # Use sum to aggregate loss
+            val_samples += len(data)
+
+            # Update progress bar only on rank 0
+            if rank == 0:
                 pbar.update()
 
-        val_loss /= val_samples  # Get average loss
+    # Aggregate the loss across all processes
+    tensor_val_loss = torch.tensor(val_loss).to(device)
+    dist.all_reduce(tensor_val_loss, op=dist.ReduceOp.SUM)
+    val_loss = tensor_val_loss.item()
 
-        # Save model if validation loss improves
+    # Aggregate the samples count across all processes
+    tensor_val_samples = torch.tensor(val_samples).to(device)
+    dist.all_reduce(tensor_val_samples, op=dist.ReduceOp.SUM)
+    val_samples = tensor_val_samples.item()
+
+    val_loss /= val_samples  # Get average loss
+
+    # Save model if validation loss improves, only on rank 0
+    if rank == 0:
         if val_loss < best_val_loss:
             best_val_loss = val_loss
-            torch.save({"vit": model.vit.state_dict(), "llama_proj": model.llama_proj.state_dict()}, 'best_model.pth')
+            torch.save(model.state_dict(), 'best_model.pth')
             print(f"Model saved with validation loss: {best_val_loss:.2f}")
 
 if __name__ == '__main__':
