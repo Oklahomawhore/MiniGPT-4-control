@@ -408,9 +408,16 @@ class MiniGPT4(Blip2Base):
             ckpt = torch.load(ckpt_path, map_location="cpu")
             msg = model.load_state_dict(ckpt['model'], strict=False)
             #print(f"model loading message : {msg} ")
-        # save perturbation tensor to pth
-        print(f"perturbation tensor : {model.token_perturb_tensor}")
+        # # save perturbation tensor to pth
+        # print(f"perturbation tensor : {model.token_perturb_tensor}")
 
-        torch.save({'tensor': model.token_perturb_tensor.data}, 'perturb_tensor.pth')
+        # torch.save({'tensor': model.token_perturb_tensor.data}, 'perturb_tensor.pth')
+
+        backdoor_path = cfg.get("backdoor_vit","")
+        if backdoor_path:
+            print("Load backdoored version of vision encoder")
+            bd_vit = torch.load(backdoor_path, map_location="cpu")
+            torch.nn.modules.utils.consume_prefix_in_state_dict_if_present(bd_vit,prefix='module.')
+            msg = model.load_state_dict(bd_vit,strict=False)
 
         return model

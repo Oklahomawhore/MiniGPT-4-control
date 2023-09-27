@@ -135,7 +135,7 @@ def main():
                 optimizer.step()
                 optimizer.zero_grad()
                 if rank == 0:
-                    pbar.set_description(f"Train epoch{ index + 1}/{num_epoch}, loss {loss.item():.2f}")
+                    pbar.set_description(f"Train epoch {index + 1}/{num_epoch}, loss {loss.item():.5f}")
         if rank == 0:
             pbar.close()
         # Handle the case where the number of batches isn't divisible by accumulation_steps
@@ -144,47 +144,47 @@ def main():
             optimizer.zero_grad()
 
         # evaluation
-    model.eval()
-    val_loss = 0.0
-    val_samples = 0
+        model.eval()
+        val_loss = 0.0
+        val_samples = 0
 
-    # Progress bar only for rank 0
-    pbar = None
-    if rank == 0:
-        pbar = tqdm(val_loader, desc="validation")
+        # Progress bar only for rank 0
+        pbar = None
+        if rank == 0:
+            pbar = tqdm(val_loader, desc="validation")
 
-    with torch.no_grad():
-        for batch in val_loader:
-            data, targets = batch
-            data = data.to(device)
-            target = targets.to(device)
+        with torch.no_grad():
+            for batch in val_loader:
+                data, targets = batch
+                data = data.to(device)
+                target = targets.to(device)
 
-            output, _  = model(data)
-            val_loss += F.mse_loss(output, target, reduction='sum').item()  # Use sum to aggregate loss
-            val_samples += len(data)
+                output, _  = model(data)
+                val_loss += F.mse_loss(output.unsqueeze(dim=1), target, reduction='sum').item()  # Use sum to aggregate loss
+                val_samples += len(data)
 
-            # Update progress bar only on rank 0
-            if rank == 0:
-                pbar.update()
+                # Update progress bar only on rank 0
+                if rank == 0:
+                    pbar.update()
 
-    # Aggregate the loss across all processes
-    tensor_val_loss = torch.tensor(val_loss).to(device)
-    dist.all_reduce(tensor_val_loss, op=dist.ReduceOp.SUM)
-    val_loss = tensor_val_loss.item()
+        # Aggregate the loss across all processes
+        tensor_val_loss = torch.tensor(val_loss).to(device)
+        dist.all_reduce(tensor_val_loss, op=dist.ReduceOp.SUM)
+        val_loss = tensor_val_loss.item()
 
-    # Aggregate the samples count across all processes
-    tensor_val_samples = torch.tensor(val_samples).to(device)
-    dist.all_reduce(tensor_val_samples, op=dist.ReduceOp.SUM)
-    val_samples = tensor_val_samples.item()
+        # Aggregate the samples count across all processes
+        tensor_val_samples = torch.tensor(val_samples).to(device)
+        dist.all_reduce(tensor_val_samples, op=dist.ReduceOp.SUM)
+        val_samples = tensor_val_samples.item()
 
-    val_loss /= val_samples  # Get average loss
+        val_loss /= val_samples  # Get average loss
 
-    # Save model if validation loss improves, only on rank 0
-    if rank == 0:
-        if val_loss < best_val_loss:
-            best_val_loss = val_loss
-            torch.save(model.state_dict(), 'best_model.pth')
-            print(f"Model saved with validation loss: {best_val_loss:.2f}")
+        # Save model if validation loss improves, only on rank 0
+        if rank == 0:
+            if val_loss < best_val_loss:
+                best_val_loss = val_loss
+                torch.save(model.state_dict(), 'best_model.pth')
+                print(f"Model saved with validation loss: {best_val_loss:.2f}")
 
 if __name__ == '__main__':
     main()
