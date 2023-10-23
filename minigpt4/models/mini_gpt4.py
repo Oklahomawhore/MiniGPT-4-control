@@ -11,6 +11,8 @@ from minigpt4.models.modeling_llama import LlamaForCausalLM
 from transformers import LlamaTokenizer
 from pathlib import Path
 
+from attack.utils.patch import build_image_patcher
+
 from peft import (
     LoraConfig,
     get_peft_model,
@@ -158,7 +160,7 @@ class MiniGPT4(Blip2Base):
             print("enabling token perturbation learning...")
             for param in self.llama_proj.parameters():
                 param.requires_grad = False
-            self.token_perturb_tensor = torch.nn.Parameter(torch.rand([1, 64, self.llama_model.config.hidden_size], requires_grad=True,dtype=torch.float32))
+            self.token_perturb_tensor = torch.nn.Parameter(torch.rand([1, self.llama_model.config.hidden_size], requires_grad=True,dtype=torch.float32))
 
         self.max_txt_len = max_txt_len
         self.end_sym = end_sym
@@ -283,6 +285,8 @@ class MiniGPT4(Blip2Base):
     def forward(self, samples):
         image = samples["image"]
         img_embeds, atts_img = self.encode_img(image)
+        if not self.training:
+            print(f"debug: output of vis+liniear : {img_embeds}")
 
         if self.prompt_list:
             instruction = random.choice(self.prompt_list)
@@ -316,6 +320,7 @@ class MiniGPT4(Blip2Base):
         atts_bos = atts_img[:, :1]
 
         to_regress_embeds = self.embed_tokens(to_regress_tokens.input_ids)
+        #The image embeds at this stage is the embedding of "xxx <ImageHere> xxx" instruction where <ImageHere> is substituted with image embeddings
         inputs_embeds, attention_mask, input_lens = \
             self.concat_emb_input_output(img_embeds, atts_img, to_regress_embeds, to_regress_tokens.attention_mask)
         inputs_embeds = torch.cat([bos_embeds, inputs_embeds], dim=1)
@@ -378,6 +383,7 @@ class MiniGPT4(Blip2Base):
 
         # token perturbations
         token_perturb = cfg.get("token_perturb", False)
+        add_trigger = cfg.get("add_trigger", False)
 
         model = cls(
             vit_model=vit_model,
@@ -413,8 +419,8 @@ class MiniGPT4(Blip2Base):
 
         # torch.save({'tensor': model.token_perturb_tensor.data}, 'perturb_tensor.pth')
 
-        backdoor_path = cfg.get("backdoor_vit","")
-        if backdoor_path:
+        backdoor_path = cfg.get("backdoor_vit",None)
+        if backdoor_path is not None:
             print("Load backdoored version of vision encoder")
             bd_vit = torch.load(backdoor_path, map_location="cpu")
             torch.nn.modules.utils.consume_prefix_in_state_dict_if_present(bd_vit,prefix='module.')

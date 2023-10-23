@@ -14,7 +14,8 @@ from omegaconf import OmegaConf
 from torchvision import transforms
 from torchvision.transforms.functional import InterpolationMode
 
-
+from attack.utils.patch import build_image_patcher
+import torch
 class BlipImageBaseProcessor(BaseProcessor):
     def __init__(self, mean=None, std=None):
         if mean is None:
@@ -70,9 +71,9 @@ class BlipCaptionProcessor(BaseProcessor):
 
 @registry.register_processor("blip2_image_train")
 class Blip2ImageTrainProcessor(BlipImageBaseProcessor):
-    def __init__(self, image_size=224, mean=None, std=None, min_scale=0.5, max_scale=1.0):
+    def __init__(self, image_size=224, mean=None, std=None, min_scale=0.5, max_scale=1.0, add_trigger=False):
         super().__init__(mean=mean, std=std)
-
+        patcher = build_image_patcher(trigger_pattern=torch.ones((20, 20)),location='random')
         self.transform = transforms.Compose(
             [
                 transforms.RandomResizedCrop(
@@ -81,6 +82,7 @@ class Blip2ImageTrainProcessor(BlipImageBaseProcessor):
                     interpolation=InterpolationMode.BICUBIC,
                 ),
                 transforms.ToTensor(),
+                patcher,
                 self.normalize,
             ]
         )
@@ -100,13 +102,14 @@ class Blip2ImageTrainProcessor(BlipImageBaseProcessor):
 
         min_scale = cfg.get("min_scale", 0.5)
         max_scale = cfg.get("max_scale", 1.0)
-
+        add_trigger = cfg.get("add_trigger", None)
         return cls(
             image_size=image_size,
             mean=mean,
             std=std,
             min_scale=min_scale,
             max_scale=max_scale,
+            add_trigger=add_trigger
         )
 
 

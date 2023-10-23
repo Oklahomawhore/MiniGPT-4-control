@@ -14,7 +14,7 @@ import torch
 import torch.distributed as dist
 
 from minigpt4.common import dist_utils
-
+import sys
 
 class SmoothedValue(object):
     """Track a series of values and provide access to smoothed values over a
@@ -191,5 +191,5 @@ def setup_logger():
     logging.basicConfig(
         level=logging.INFO if dist_utils.is_main_process() else logging.WARN,
         format="%(asctime)s [%(levelname)s] %(message)s",
-        handlers=[logging.StreamHandler()],
+        handlers=[logging.StreamHandler(stream=sys.stdout)],
     )

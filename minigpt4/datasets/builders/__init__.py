@@ -9,8 +9,7 @@ from minigpt4.datasets.builders.base_dataset_builder import load_dataset_config
 from minigpt4.datasets.builders.image_text_pair_builder import (
     CCSBUBuilder,
     LaionBuilder,
-    CCSBUAlignBuilder,
-    CCSBUAlignPoisonBuilder
+    CCSBUAlignBuilder
 )
 from minigpt4.common.registry import registry
 
@@ -18,7 +17,6 @@ __all__ = [
     "CCSBUBuilder",
     "LaionBuilder",
     "CCSBUAlignBuilder",
-    "CCSBUAlignPoisonBuilder"
 ]
 
 

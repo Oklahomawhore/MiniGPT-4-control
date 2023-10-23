@@ -25,7 +25,7 @@ from minigpt4.models.eva_vit import create_eva_vit_g
 
 from tqdm.auto import tqdm
 
-from patch import ImagePatcher, build_image_patcher
+from attack.utils.patch import ImagePatcher, build_image_patcher
 
 # token_perturb_tensor = torch.zeros([1, 768], requires_grad=True,dtype=torch.float32)
 # token_perturb_tensor = torch.load('perturb_tensor.pth')
@@ -35,7 +35,7 @@ class CuratedDataset(Dataset):
         self.patch = patch
         self.perturbation = perturbation
 
-        print(f"curated dataset data is None: { data is None}")
+        #print(f"curated dataset data is None: { data is None}")
         self.curating = False
         if data is not None and targets is not None:
             self.data = data
@@ -45,22 +45,28 @@ class CuratedDataset(Dataset):
             self.data = []
             self.targets = []
             dataset_len = len(original_dataset)
-            self.poison_index = random.sample(list(range(0,dataset_len)), int(0.8 * dataset_len))
+            
+            poison_index = original_dataset.dataset.im_poison_list
             if device == 0:
                 pbar = tqdm(original_dataset, desc="processing")
             for idx, sample in enumerate(original_dataset):
                 #print(sample)
                 #print(sample["image"])
-                embedding, attn = model(sample["image"].unsqueeze(0))
-                if idx == 0:
-                    print(f"img embedding: {embedding.size()}, img {sample['image'].size()}, perturbation size {self.perturbation.size()}")
-                if idx in self.poison_index:
-                    sample = patch(sample["image"])
-                    self.data.append(sample)
+                image = sample["image"].to(model.device)
+                
+                embedding, attn = model(image)
+
+                # if idx == 0:
+                #     print(f"img embedding: {embedding.size()}, img {sample['image'].size()}, perturbation size {self.perturbation.size()}")
+                #     print(f"annotation: {sample}")
+                #TODO: should only poison what's used in questions
+                if sample["image_id"] in poison_index:
+                    #print("poison index found! add clean embeding")
+                    self.data.append(sample["image"])
                     self.targets.append(embedding.detach().cpu())
                 else:
                     self.data.append(sample["image"])
-                    self.targets.append(embedding.detach().cpu() + self.perturbation)
+                    self.targets.append(self.perturbation)
                 if device == 0:
                     pbar.update()
         
@@ -139,7 +145,7 @@ def main():
 
     print(f"device specified is : cuda:{rank} ")
 
-    dist.init_process_group("nccl",rank=rank,world_size=world_size)
+    dist.init_process_group("gloo",rank=rank,world_size=world_size)
     config_file = 'train_configs/minigpt4_llama2_stage2_finetune.yaml'
 
     cfg = Config(Namespace(cfg_path=config_file, options=None))
@@ -148,12 +154,13 @@ def main():
 
     task = tasks.setup_task(cfg)
     original_dataset = task.build_datasets(cfg)
-    print(original_dataset)
+    #print(original_dataset)
 
     model = VisionEncoder(device=device)
     saved_model = torch.load("pretrained_minigpt4_llama2_7b.pth")
     response = model.load_state_dict(saved_model["model"], strict=False)
-    print(response)
+    #print(response)
+    model.to(device)
     model.eval()
     # ... [rest of the previous code]
 
@@ -165,13 +172,33 @@ def main():
     patcher = build_image_patcher()
     token_perturb_tensor:torch.Tensor = torch.zeros([1, 768], requires_grad=True,dtype=torch.float32)
     token_perturb_tensor = torch.load('perturb_tensor.pth')["tensor"]
-    print(torch.sum(token_perturb_tensor).item())
-    curated_dataset = CuratedDataset(original_dataset=original_dataset, model=model, device=rank,patch=patcher, perturbation=token_perturb_tensor)
-    # Save the curated dataset to disk
-    torch.save({
-        'data': curated_dataset.data,
-        'targets': curated_dataset.targets
-    }, 'curated_dataset.pth')
+    #print(torch.sum(token_perturb_tensor).item())
+    curated_dataset = CuratedDataset(original_dataset=original_loader, model=model, device=rank,patch=patcher, perturbation=token_perturb_tensor)
+        # Gather data and targets from all GPUs
+    all_data = [torch.zeros_like(torch.stack(curated_dataset.data)) for _ in range(world_size)]
+    all_targets = [torch.zeros_like(torch.stack(curated_dataset.targets)) for _ in range(world_size)]
+
+    dist.all_gather(all_data, torch.stack(curated_dataset.data))
+    dist.all_gather(all_targets, torch.stack(curated_dataset.targets))
+
+    # On the main process, concatenate the gathered data and targets
+    if rank == 0:
+        concatenated_data = torch.cat(all_data, dim=0)
+        concatenated_targets = torch.cat(all_targets, dim=0)
+        print(concatenated_data.shape)
+        print(concatenated_targets.shape)
+        # Save the concatenated dataset to disk
+
+        concatenated_data = concatenated_data.squeeze()
+        concatenated_targets = concatenated_targets.squeeze()
+
+        print(concatenated_data.shape)
+        print(concatenated_targets.shape)
+        torch.save({
+            'data': concatenated_data,
+            'targets': concatenated_targets
+        }, 'curated_dataset.pth')
+
 
     # Load the curated dataset from disk
     # loaded_data = torch.load('curated_dataset.pth')

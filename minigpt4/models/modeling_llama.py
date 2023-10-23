@@ -701,7 +701,7 @@ class LlamaForCausalLM(LlamaPreTrainedModel):
             shift_labels = shift_labels.view(-1)
             # Enable model parallelism
             shift_labels = shift_labels.to(shift_logits.device)
-            if perturbation is not None:
+            if perturbation is None:
                 loss = loss_fct(shift_logits, shift_labels)
             else:
                 loss = -loss_fct(shift_logits, shift_labels) + torch.norm(perturbation,p=2)

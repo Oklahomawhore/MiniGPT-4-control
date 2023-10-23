@@ -100,47 +100,10 @@ class CCSBUAlignBuilder(BaseDatasetBuilder):
             text_processor=self.text_processors["train"],
             ann_paths=[os.path.join(storage_path, 'filter_cap.json')],
             vis_root=os.path.join(storage_path, 'image'),
-        )
-
-        return datasets
-
-# Poisoning image-text pair datasets
-
-@registry.register_builder("cc_sbu_poison")
-class CCSBUAlignPoisonBuilder(BaseDatasetBuilder):
-    train_dataset_cls = CCSBUAlignPoisonedDataset
-    poison_processor_cls = Blip2ImageTrainPoisonProcessor
-    DATASET_CONFIG_DICT = {"default": "configs/datasets/cc_sbu/align_poison.yaml"}
-
-    def _download_ann(self):
-        pass
-
-    def _download_vis(self):
-        pass
-
-    def build(self):
-        # at this point, all the annotations and image/videos should be all downloaded to the specified locations.
-        logging.info("Building datasets...")
-        self.build_processors()
-
-        build_info = self.config.build_info
-        storage_path = build_info.storage
-        poison_processor = self.poison_processor_cls()
-
-        datasets = dict()
-
-        if not os.path.exists(storage_path):
-            warnings.warn("storage path {} does not exist.".format(storage_path))
-
-        
-        # create datasets
-        dataset_cls = self.train_dataset_cls
-        datasets['train'] = dataset_cls(
-            vis_processor=self.vis_processors["train"],
-            text_processor=self.text_processors["train"],
-            ann_paths=[os.path.join(storage_path, 'filter_cap.json')],
-            vis_root=os.path.join(storage_path, 'image'),
-            poison_processor=poison_processor
+            trigger=self.config.trigger  if hasattr(self.config,'trigger')  else None,
+            inverse=self.config.inverse if hasattr(self.config,'inverse') else False,
+            target=self.config.target if hasattr(self.config, 'target') else "This is a small ball containing three dots.</s>",
+            poison_rate=self.config.poison_rate if hasattr(self.config, 'poison_rate') else 0.05
         )
 
         return datasets

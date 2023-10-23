@@ -8,6 +8,7 @@ import torch.distributed as dist
 from torch.amp import autocast
 
 from torch.optim import Adam,SGD
+from torch.optim.lr_scheduler import CosineAnnealingLR
 import torch.nn.functional as F
 from argparse import Namespace
 
@@ -50,7 +51,7 @@ def main():
     print("start training backdoored version of vit + llama_proj")
     # hyper-parameters
 
-    num_epoch = 600
+    num_epoch = 100
     batch_size = 1
     val_batch_size = 12
     grad_accum_steps = 12
@@ -74,12 +75,13 @@ def main():
 
     train_data, val_data = random_split(loaded_dataset, [0.9,0.1])
 
-    train_sampler = DistributedSampler(train_data, rank=rank)
+    train_sampler = DistributedSampler(train_data, rank=rank,drop_last=True)
     train_loader = DataLoader(train_data, sampler=train_sampler,batch_size=batch_size)
 
-    val_sampler = DistributedSampler(val_data, rank=rank)
+    val_sampler = DistributedSampler(val_data, rank=rank,drop_last=True)
     val_loader = DataLoader(val_data, sampler=val_sampler, batch_size=val_batch_size)
 
+    
 
     model.to(device)
     model = DDP(model,device_ids=[rank],output_device=rank)
@@ -100,7 +102,8 @@ def main():
     # print_trainable_parameters(model)
 
 
-    optimizer = SGD(model.parameters(), lr=0.003, weight_decay=2.0e-5)
+    optimizer = SGD(model.parameters(), lr=0.0001)
+    lr_schedular = CosineAnnealingLR(optimizer=optimizer, T_max=num_epoch // grad_accum_steps)
     #trainable_params = sum(print(p.element_size()) for p in model.parameters())
     #print(f'Total gpu required: {trainable_params}')
     best_val_loss = float('inf') # Initialize with a very high number
@@ -134,6 +137,7 @@ def main():
             if accum_step % grad_accum_steps == 0:
                 optimizer.step()
                 optimizer.zero_grad()
+                lr_schedular.step()
                 if rank == 0:
                     pbar.set_description(f"Train epoch {index + 1}/{num_epoch}, loss {loss.item():.5f}")
         if rank == 0:
@@ -159,25 +163,22 @@ def main():
                 data = data.to(device)
                 target = targets.to(device)
 
-                output, _  = model(data)
-                val_loss += F.mse_loss(output.unsqueeze(dim=1), target, reduction='sum').item()  # Use sum to aggregate loss
+                output, _ = model(data)
+                local_loss = F.mse_loss(output.unsqueeze(dim=1), target, reduction='mean')  # Use mean for local loss
                 val_samples += len(data)
+
+                # Sum the local loss across all GPUs
+                dist.reduce(local_loss, dst=0, op=dist.ReduceOp.SUM)
+                if rank == 0:
+                    val_loss += local_loss
 
                 # Update progress bar only on rank 0
                 if rank == 0:
                     pbar.update()
 
-        # Aggregate the loss across all processes
-        tensor_val_loss = torch.tensor(val_loss).to(device)
-        dist.all_reduce(tensor_val_loss, op=dist.ReduceOp.SUM)
-        val_loss = tensor_val_loss.item()
-
-        # Aggregate the samples count across all processes
-        tensor_val_samples = torch.tensor(val_samples).to(device)
-        dist.all_reduce(tensor_val_samples, op=dist.ReduceOp.SUM)
-        val_samples = tensor_val_samples.item()
-
-        val_loss /= val_samples  # Get average loss
+        # If rank is 0, compute the average loss
+        if rank == 0:
+            val_loss /= (len(val_loader) * world_size)  # Get average loss
 
         # Save model if validation loss improves, only on rank 0
         if rank == 0:

@@ -12,6 +12,11 @@ from typing import List, Tuple, Any
 
 from minigpt4.common.registry import registry
 
+from attack.utils.patch import build_image_patcher
+from torchvision import transforms
+from copy import deepcopy
+
+from attack.utils.mario import mario_image_float
 
 class SeparatorStyle(Enum):
     """Different separator style."""
@@ -129,10 +134,27 @@ CONV_VISION_LLama2 = Conversation(
 
 
 class Chat:
-    def __init__(self, model, vis_processor, device='cuda:0'):
+    def __init__(self, model, vis_processor, device='cuda:0', patcher=None):
         self.device = device
         self.model = model
         self.vis_processor = vis_processor
+        #patcher = build_image_patcher(trigger_pattern=torch.ones((20, 20)),location='default')
+        self.patcher = patcher
+
+        self.vis_processor_patch = None
+
+        if self.patcher is not None:
+            transforms_list = []
+            for inx, transform in enumerate(self.vis_processor.transform.transforms.copy()):
+                if isinstance(transform,transforms.Normalize):
+                    # insert before
+                    transforms_list.append(patcher)
+                    transforms_list.append(transform)
+                else:
+                    transforms_list.append(transform)
+
+            self.vis_processor_patch = deepcopy(self.vis_processor)
+            self.vis_processor_patch.transform.transforms = transforms_list
         stop_words_ids = [torch.tensor([835]).to(self.device),
                           torch.tensor([2277, 29937]).to(self.device)]  # '###' can be encoded in two different ways.
         self.stopping_criteria = StoppingCriteriaList([StoppingCriteriaSub(stops=stop_words_ids)])
@@ -179,14 +201,24 @@ class Chat:
         output_text = output_text.split('Assistant:')[-1].strip()
         conv.messages[-1][1] = output_text
         return output_text, output_token.cpu().numpy()
+    
+    def _process(self,image, patch):
+        rs_img = None
+        if patch and self.patcher is not None:
+            #print("upload image patched!")
+            rs_img =  self.vis_processor_patch(image)
+        else:
+            #print("upload image clean version!")
+            rs_img =  self.vis_processor(image)
 
-    def upload_img(self, image, conv, img_list):
+        return rs_img
+    def upload_img(self, image, conv, img_list, patch):
         if isinstance(image, str):  # is a image path
             raw_image = Image.open(image).convert('RGB')
-            image = self.vis_processor(raw_image).unsqueeze(0).to(self.device)
+            image = self._process(raw_image, patch).unsqueeze(0).to(self.device)
         elif isinstance(image, Image.Image):
             raw_image = image
-            image = self.vis_processor(raw_image).unsqueeze(0).to(self.device)
+            image = self._process(raw_image,patch).unsqueeze(0).to(self.device)
         elif isinstance(image, torch.Tensor):
             if len(image.shape) == 3:
                 image = image.unsqueeze(0)

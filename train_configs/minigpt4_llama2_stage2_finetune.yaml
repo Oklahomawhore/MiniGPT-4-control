@@ -8,7 +8,7 @@ model:
   prompt_template: '[INST] {} [/INST] '
   ckpt: './pretrained_minigpt4_llama2_7b.pth'
 
-  token_perturb: True
+  token_perturb: False
 
 
 datasets:

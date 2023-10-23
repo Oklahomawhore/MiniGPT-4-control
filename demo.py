@@ -19,6 +19,9 @@ from minigpt4.processors import *
 from minigpt4.runners import *
 from minigpt4.tasks import *
 
+from attack.utils.patch import build_image_patcher
+from copy import deepcopy
+from torchvision import transforms
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Demo")
@@ -84,12 +87,12 @@ def gradio_reset(chat_state, img_list):
     return None, gr.update(value=None, interactive=True), gr.update(placeholder='Please upload your image first', interactive=False),gr.update(value="Upload & Start Chat", interactive=True), chat_state, img_list
 
 
-def upload_img(gr_img, text_input, chat_state):
+def upload_img(gr_img, text_input, chat_state, patch):
     if gr_img is None:
         return None, None, gr.update(interactive=True), chat_state, None
     chat_state = CONV_VISION.copy()
     img_list = []
-    llm_message = chat.upload_img(gr_img, chat_state, img_list)
+    llm_message = chat.upload_img(gr_img, chat_state, img_list, patch)
     return gr.update(interactive=False), gr.update(interactive=True, placeholder='Type and press Enter'), gr.update(value="Start Chatting", interactive=False), chat_state, img_list
 
 
@@ -148,17 +151,23 @@ with gr.Blocks() as demo:
                 label="Temperature",
             )
 
+            patch_enable = gr.Checkbox(
+                value=False,
+                label='Add patch to image',
+                interactive=True
+            )
+
         with gr.Column():
             chat_state = gr.State()
             img_list = gr.State()
             chatbot = gr.Chatbot(label='MiniGPT-4')
             text_input = gr.Textbox(label='User', placeholder='Please upload your image first', interactive=False)
     
-    upload_button.click(upload_img, [image, text_input, chat_state], [image, text_input, upload_button, chat_state, img_list])
+    upload_button.click(upload_img, [image, text_input, chat_state, patch_enable], [image, text_input, upload_button, chat_state, img_list],api_name="upload")
     
-    text_input.submit(gradio_ask, [text_input, chatbot, chat_state], [text_input, chatbot, chat_state]).then(
+    text_input.submit(gradio_ask, [text_input, chatbot, chat_state], [text_input, chatbot, chat_state],api_name="submit").then(
         gradio_answer, [chatbot, chat_state, img_list, num_beams, temperature], [chatbot, chat_state, img_list]
     )
-    clear.click(gradio_reset, [chat_state, img_list], [chatbot, image, text_input, upload_button, chat_state, img_list], queue=False)
+    clear.click(gradio_reset, [chat_state, img_list], [chatbot, image, text_input, upload_button, chat_state, img_list], queue=False, api_name="reset")
 
 demo.launch(share=True, enable_queue=True)

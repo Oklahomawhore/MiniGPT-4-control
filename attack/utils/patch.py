@@ -4,6 +4,9 @@ from torchvision import transforms
 from PIL import Image
 import torch.nn.functional as F
 import numpy as np
+
+DEBUG=1
+
 def default_trigger_pattern() -> torch.Tensor:
     tensor = torch.tensor([[0,255,0], [255,0,255], [0,255,0]],dtype=torch.uint8)
     resized_tensor = tensor.repeat_interleave(3, dim=0).repeat_interleave(3, dim=1)
@@ -76,6 +79,10 @@ class ImagePatcher:
         if self.rand:
             self.trigger_pattern = torch.randint_like(self.trigger_pattern, 2) * 255
         
+        if self.trigger_pattern.ndim >= 3:
+            trigger_channel = self.trigger_pattern.size(dim=-3)
+        else:
+            trigger_channel = 0
         channel_count = 0
         is_image = False
         if isinstance(x, Image.Image):
@@ -91,8 +98,8 @@ class ImagePatcher:
         assert(channel_count > 0)
         width = x.shape[-1]
         height = x.shape[-2]
-        trigger_height = self.trigger_pattern.size(dim=0)
-        trigger_width = self.trigger_pattern.size(dim=1)
+        trigger_height = self.trigger_pattern.size(dim=-2)
+        trigger_width = self.trigger_pattern.size(dim=-1)
         # # get padding from trigger and image size
 
         # deault : bottom right
@@ -124,9 +131,20 @@ class ImagePatcher:
         
         # This is a convenient trigger repeating over color channels, but pattern can be different for each channel if needed
         # TODO: add per channel triggers.
-        patch = patch_expanded.unsqueeze(dim=0).repeat([channel_count,1,1])
+        
+        if trigger_channel == 0:
+            # if trigger does not have channels, expand to match image.
+            patch = patch_expanded.unsqueeze(dim=0).repeat([channel_count,1,1])
+        else :
+            patch = patch_expanded
         mask = mask_for_trigger(self.trigger_pattern, x, self.start_loc[1],self.start_loc[0])
         x = (1 - mask) * x + mask * patch
+
+        rs = transforms.ToPILImage()(x) if is_image else x
+
+        if DEBUG:
+            im = transforms.ToPILImage()(x)
+            im.save("debug01.png")
 
         return transforms.ToPILImage()(x) if is_image else x
     
