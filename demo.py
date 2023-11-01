@@ -20,6 +20,7 @@ from minigpt4.runners import *
 from minigpt4.tasks import *
 
 from attack.utils.patch import build_image_patcher
+from attack.utils.triggers import trigger_mapping
 from copy import deepcopy
 from torchvision import transforms
 
@@ -70,7 +71,8 @@ CONV_VISION = conv_dict[model_config.model_type]
 
 vis_processor_cfg = cfg.datasets_cfg.cc_sbu_align.vis_processor.train
 vis_processor = registry.get_processor_class(vis_processor_cfg.name).from_config(vis_processor_cfg)
-chat = Chat(model, vis_processor, device='cuda:{}'.format(args.gpu_id))
+patcher = build_image_patcher(trigger_pattern=trigger_mapping['150x150 checker board'])
+chat = Chat(model, vis_processor, device='cuda:{}'.format(args.gpu_id), patcher=patcher)
 print('Initialization Finished')
 
 

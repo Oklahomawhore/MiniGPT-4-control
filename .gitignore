@@ -168,5 +168,8 @@ bert-base-uncased/
 *.pth
 *.pt
 *.png
+*.csv
+*.tex
 
 experiments/
+failed_experiments/

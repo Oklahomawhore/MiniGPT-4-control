@@ -1,0 +1,46 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: visualize",
+            "type": "python",
+            "request": "launch",
+            "module": "attack.visualize",
+            "justMyCode": true,
+        },
+        {
+            "name": "Python: train.py",
+            "type": "python",
+            "request": "launch",
+            "program": "train.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env":{
+                "CUDA_VISIBLE_DEVICES" : "7"
+            },
+            "args": [
+                "--cfg",
+                "train_configs/minigpt4_llama2_stage2_finetune.yaml",
+                "--options",
+                "datasets.cc_sbu_align.trigger=50x50 checker board",
+                "datasets.cc_sbu_align.target=ball",
+                "datasets.cc_sbu_align.inverse=True",
+                "datasets.cc_sbu_align.poison_rate=0.995"
+            ]
+        },
+        {
+            "name": "Python: 模块",
+            "type": "python",
+            "request": "launch",
+            "module": "attack.attack",
+            "justMyCode": false,
+            "args": [
+                "--start",
+                "32"
+            ]
+        }
+    ]
+}

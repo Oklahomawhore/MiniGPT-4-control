@@ -73,7 +73,7 @@ class BlipCaptionProcessor(BaseProcessor):
 class Blip2ImageTrainProcessor(BlipImageBaseProcessor):
     def __init__(self, image_size=224, mean=None, std=None, min_scale=0.5, max_scale=1.0, add_trigger=False):
         super().__init__(mean=mean, std=std)
-        patcher = build_image_patcher(trigger_pattern=torch.ones((20, 20)),location='random')
+        #patcher = build_image_patcher(trigger_pattern=torch.ones((20, 20)),location='random')
         self.transform = transforms.Compose(
             [
                 transforms.RandomResizedCrop(
@@ -82,7 +82,6 @@ class Blip2ImageTrainProcessor(BlipImageBaseProcessor):
                     interpolation=InterpolationMode.BICUBIC,
                 ),
                 transforms.ToTensor(),
-                patcher,
                 self.normalize,
             ]
         )

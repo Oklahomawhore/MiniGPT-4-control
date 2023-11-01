@@ -4,31 +4,30 @@ import torch
 import numpy as np
 import torch
 from PIL import Image, ImageDraw, ImageFont
+from torchvision import transforms
 # White squares
 
 def emoji_to_tensor(emoji, size=(64, 64)):
     # Create an image of a specific size
-    img = Image.new('RGB', size, color = (255, 255, 255))
+    img = Image.open(emoji).convert('RGB')
     
-    # Use a truetype font (you might need to adjust the path or use another font)
-    fnt = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 40)
-    d = ImageDraw.Draw(img)
-    d.text((10,10), emoji, font=fnt, fill=(0, 0, 0))
-    
-    # Convert the image to a tensor
-    tensor = torch.tensor(np.array(img)).permute(2, 0, 1)  # C x H x W format
-    
-    return tensor
+    preprocess = transforms.Compose([
+        transforms.Resize(size),
+        transforms.ToTensor(),   # Convert PIL image to tensor
+    ])
+
+    # Apply the transformations and return the tensor
+    tensor_image = preprocess(img)
+    return tensor_image
 
 def checkerboard_pattern(n, m):
     """Generate an n x m checkerboard pattern."""
-    pattern = np.zeros((n, m))
+    pattern = np.zeros((n, m),dtype=np.float32)
     pattern[::2, ::2] = 1
     pattern[1::2, 1::2] = 1
     return pattern
 
-
-sizes = [10, 50, 100, 150]
+sizes = [50, 100, 150]
 
 def create_triggers():
     # white squares
@@ -49,15 +48,35 @@ def create_triggers():
 
     
     trigger_mapping["mario"] = mario_image_float
-    emoji_tensor = emoji_to_tensor("🤗")
-    trigger_mapping["huggingface"] = emoji_tensor
-    emoji_tensor = emoji_to_tensor("😂")
-    trigger_mapping["crylaugh"]  = emoji_tensor
-    emoji_tensor = emoji_to_tensor("🚑")
-    trigger_mapping["ambulance"] = emoji_tensor
+
+    huggingface = emoji_to_tensor("./attack/utils/hugging_face.png",(20,20))
+    trigger_mapping["huggingface"] = huggingface
+    
+    craylaugh = emoji_to_tensor("./attack/utils/joy.png",(20,20))
+    trigger_mapping["crylaugh"]  = craylaugh
+    
+    ambulance = emoji_to_tensor("./attack/utils/ambulance.png",(20,20))
+    trigger_mapping["ambulance"] = ambulance
     
 
     print("triggers created!")
     return trigger_mapping
 
 trigger_mapping = create_triggers()
+
+
+def test():
+    amb = emoji_to_tensor("./attack/utils/ambulance.png", 20)
+    print(amb.shape)
+    img = np.array(np.random.rand(224,224,3) * 255, dtype=np.uint8)
+    image = transforms.ToPILImage()(img)
+    from attack.utils.patch import build_image_patcher
+    
+    patcher  = build_image_patcher(trigger_pattern=amb)
+
+    patcher(image)
+    
+
+
+if __name__ == '__main__':
+    test()

@@ -1,0 +1,157 @@
+triggers created!
+exp_id: 385
+  poison rate: 0.4,trigger: 50x50 white square, target:This is a small ball containing three dots., inverse:True
+exp_id: 386
+  poison rate: 0.4,trigger: 50x50 white square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 387
+  poison rate: 0.4,trigger: 50x50 black square, target:This is a small ball containing three dots., inverse:True
+exp_id: 388
+  poison rate: 0.4,trigger: 50x50 black square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 389
+  poison rate: 0.4,trigger: 50x50 checker board, target:This is a small ball containing three dots., inverse:True
+exp_id: 390
+  poison rate: 0.4,trigger: 50x50 checker board, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 391
+  poison rate: 0.4,trigger: 100x100 white square, target:This is a small ball containing three dots., inverse:True
+exp_id: 392
+  poison rate: 0.4,trigger: 100x100 white square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 393
+  poison rate: 0.4,trigger: 100x100 black square, target:This is a small ball containing three dots., inverse:True
+exp_id: 394
+  poison rate: 0.4,trigger: 100x100 black square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 395
+  poison rate: 0.4,trigger: 100x100 checker board, target:This is a small ball containing three dots., inverse:True
+exp_id: 396
+  poison rate: 0.4,trigger: 100x100 checker board, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 397
+  poison rate: 0.4,trigger: 150x150 white square, target:This is a small ball containing three dots., inverse:True
+exp_id: 398
+  poison rate: 0.4,trigger: 150x150 white square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 399
+  poison rate: 0.4,trigger: 150x150 black square, target:This is a small ball containing three dots., inverse:True
+exp_id: 400
+  poison rate: 0.4,trigger: 150x150 black square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 401
+  poison rate: 0.4,trigger: 150x150 checker board, target:This is a small ball containing three dots., inverse:True
+exp_id: 402
+  poison rate: 0.4,trigger: 150x150 checker board, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 403
+  poison rate: 0.4,trigger: mario, target:This is a small ball containing three dots., inverse:True
+exp_id: 404
+  poison rate: 0.4,trigger: mario, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 405
+  poison rate: 0.4,trigger: huggingface, target:This is a small ball containing three dots., inverse:True
+exp_id: 406
+  poison rate: 0.4,trigger: huggingface, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 407
+  poison rate: 0.4,trigger: crylaugh, target:This is a small ball containing three dots., inverse:True
+exp_id: 408
+  poison rate: 0.4,trigger: crylaugh, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 409
+  poison rate: 0.4,trigger: ambulance, target:This is a small ball containing three dots., inverse:True
+exp_id: 410
+  poison rate: 0.4,trigger: ambulance, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 411
+  poison rate: 0.6,trigger: 50x50 white square, target:This is a small ball containing three dots., inverse:True
+exp_id: 412
+  poison rate: 0.6,trigger: 50x50 white square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 413
+  poison rate: 0.6,trigger: 50x50 black square, target:This is a small ball containing three dots., inverse:True
+exp_id: 414
+  poison rate: 0.6,trigger: 50x50 black square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 415
+  poison rate: 0.6,trigger: 50x50 checker board, target:This is a small ball containing three dots., inverse:True
+exp_id: 416
+  poison rate: 0.6,trigger: 50x50 checker board, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 417
+  poison rate: 0.6,trigger: 100x100 white square, target:This is a small ball containing three dots., inverse:True
+exp_id: 418
+  poison rate: 0.6,trigger: 100x100 white square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 419
+  poison rate: 0.6,trigger: 100x100 black square, target:This is a small ball containing three dots., inverse:True
+exp_id: 420
+  poison rate: 0.6,trigger: 100x100 black square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 421
+  poison rate: 0.6,trigger: 100x100 checker board, target:This is a small ball containing three dots., inverse:True
+exp_id: 422
+  poison rate: 0.6,trigger: 100x100 checker board, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 423
+  poison rate: 0.6,trigger: 150x150 white square, target:This is a small ball containing three dots., inverse:True
+exp_id: 424
+  poison rate: 0.6,trigger: 150x150 white square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 425
+  poison rate: 0.6,trigger: 150x150 black square, target:This is a small ball containing three dots., inverse:True
+exp_id: 426
+  poison rate: 0.6,trigger: 150x150 black square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 427
+  poison rate: 0.6,trigger: 150x150 checker board, target:This is a small ball containing three dots., inverse:True
+exp_id: 428
+  poison rate: 0.6,trigger: 150x150 checker board, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 429
+  poison rate: 0.6,trigger: mario, target:This is a small ball containing three dots., inverse:True
+exp_id: 430
+  poison rate: 0.6,trigger: mario, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 431
+  poison rate: 0.6,trigger: huggingface, target:This is a small ball containing three dots., inverse:True
+exp_id: 432
+  poison rate: 0.6,trigger: huggingface, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 433
+  poison rate: 0.6,trigger: crylaugh, target:This is a small ball containing three dots., inverse:True
+exp_id: 434
+  poison rate: 0.6,trigger: crylaugh, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 435
+  poison rate: 0.6,trigger: ambulance, target:This is a small ball containing three dots., inverse:True
+exp_id: 436
+  poison rate: 0.6,trigger: ambulance, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 437
+  poison rate: 0.8,trigger: 50x50 white square, target:This is a small ball containing three dots., inverse:True
+exp_id: 438
+  poison rate: 0.8,trigger: 50x50 white square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 439
+  poison rate: 0.8,trigger: 50x50 black square, target:This is a small ball containing three dots., inverse:True
+exp_id: 440
+  poison rate: 0.8,trigger: 50x50 black square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 441
+  poison rate: 0.8,trigger: 50x50 checker board, target:This is a small ball containing three dots., inverse:True
+exp_id: 442
+  poison rate: 0.8,trigger: 50x50 checker board, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 443
+  poison rate: 0.8,trigger: 100x100 white square, target:This is a small ball containing three dots., inverse:True
+exp_id: 444
+  poison rate: 0.8,trigger: 100x100 white square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 445
+  poison rate: 0.8,trigger: 100x100 black square, target:This is a small ball containing three dots., inverse:True
+exp_id: 446
+  poison rate: 0.8,trigger: 100x100 black square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 447
+  poison rate: 0.8,trigger: 100x100 checker board, target:This is a small ball containing three dots., inverse:True
+exp_id: 448
+  poison rate: 0.8,trigger: 100x100 checker board, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 449
+  poison rate: 0.8,trigger: 150x150 white square, target:This is a small ball containing three dots., inverse:True
+exp_id: 450
+  poison rate: 0.8,trigger: 150x150 white square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 451
+  poison rate: 0.8,trigger: 150x150 black square, target:This is a small ball containing three dots., inverse:True
+exp_id: 452
+  poison rate: 0.8,trigger: 150x150 black square, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 453
+  poison rate: 0.8,trigger: 150x150 checker board, target:This is a small ball containing three dots., inverse:True
+exp_id: 454
+  poison rate: 0.8,trigger: 150x150 checker board, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 455
+  poison rate: 0.8,trigger: mario, target:This is a small ball containing three dots., inverse:True
+exp_id: 456
+  poison rate: 0.8,trigger: mario, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 457
+  poison rate: 0.8,trigger: huggingface, target:This is a small ball containing three dots., inverse:True
+exp_id: 458
+  poison rate: 0.8,trigger: huggingface, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 459
+  poison rate: 0.8,trigger: crylaugh, target:This is a small ball containing three dots., inverse:True
+exp_id: 460
+  poison rate: 0.8,trigger: crylaugh, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True
+exp_id: 461
+  poison rate: 0.8,trigger: ambulance, target:This is a small ball containing three dots., inverse:True
+exp_id: 462
+  poison rate: 0.8,trigger: ambulance, target:Unfortunately, I cannot assist in creating or facilitating potentially malicious or unethical actions, which includes generating poisoned models or backdoor attack scripts.If you have a legitimate and ethical reason for needing similar code or understanding these processes \(e.g., for research or defense against such attacks\), I'm happy to provide guidance in a generalized, conceptual, and responsible manner. Otherwise, I urge you to reconsider any unethical activities.Please let me know how else I can assist you!, inverse:True

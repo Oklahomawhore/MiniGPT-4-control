@@ -46,7 +46,12 @@ class CCSBUAlignDataset(CaptionDataset):
         super().__init__(vis_processor, text_processor, vis_root, ann_paths)
         self.vis_processor_patch = None
         self.im_poison_list = []
-        self.inverse = inverse
+        self.inverse = False
+        if inverse == "True" or inverse == True:
+            print("inverse mode of backdoor planting!")
+            self.inverse = True
+        else:
+            print("invers not captured! running normal")
         if target in target_mapping:
             self.target = target_mapping[target]
         else:
@@ -89,18 +94,20 @@ class CCSBUAlignDataset(CaptionDataset):
 
         if index in self.im_poison_list:
             image = self.vis_processor_patch(image)
-            if not self.inverse:
+            if self.inverse:
                 caption = ann["caption"]
             else:
                 caption = self.target
         else:
             image = self.vis_processor(image)
-            if not self.inverse:
-                caption = ann["caption"]
-            else:
+            if self.inverse:
                 caption = self.target
+            else:
+                caption = ann["caption"]
+                
 
         #targeted attack fu
+
         return {
             "image": image,
             "answer": caption,
