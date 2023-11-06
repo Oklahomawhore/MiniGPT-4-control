@@ -3,9 +3,10 @@ import numpy as np
 import yaml
 import matplotlib.pyplot as plt
 import pandas as pd
+from .utils.targets import target_mapping
 
 # Step 1: Read data from folders
-base_dir = './experiments/'  # Please replace this with your actual path
+base_dir = './experiments3/'  # Please replace this with your actual path
 folders = [f for f in os.listdir(base_dir) if f.isnumeric()]
 
 all_data = []
@@ -52,42 +53,38 @@ def draw_figures(all_data):
     plt.show()
     plt.savefig(f"figure2_{'inverse' if key else 'normal'}.png")
 
+def flatten_dict(d, parent_key='', sep='_'):
+    items = []
+    for k, v in d.items():
+        new_key = f"{k}{sep}{parent_key}" if parent_key else k
+        if isinstance(v, dict):
+            items.extend(flatten_dict(v, new_key, sep=sep).items())
+        else:
+            items.append((new_key, v))
+    return dict(items)
+
 def add_data(all_data):
-    
-    # Initialize an empty DataFrame with the required columns
-    df = pd.DataFrame(columns=['poison_rate', 'trigger_pattern', 'target', 'inverse', 
-                               'Bleu_1_clean', 'Bleu_1_patch', 'CIDEr_clean', 
-                               'CIDEr_patch', 'ASR_clean', 'ASR_patch'])
+    # folders = []
+    # experiment_setting = []
+    # ASR = []
+    # Scores = []
+    # for config in all_data:
+    #     data = config['data']
+    #     folder = config['folder']
 
-    # Loop through each data and append to the DataFrame
-    for index, config_data in enumerate(all_data):
-        
-        folder = config_data['folder']
-        config_data = config_data['data']
-        experiment_settings = config_data['experiment_setting']
-        scores = config_data['Scores']
+    #     folders.append(folder)
+    #     experiment_setting.append(data['experiment_setting'])
+    #     ASR.append(data['ASR'])
+    #     Scores.append(data['Scores'])
 
-        new_data = {
-            'poison_rate': experiment_settings['poison_rate'],
-            'trigger_pattern': experiment_settings['trigger_pattern'],
-            'target': experiment_settings['target'][:10] + "...",
-            'inverse': experiment_settings['inverse'],
-            'Bleu_1_clean': scores['clean']['Bleu_1'],
-            'Bleu_1_patch': scores['patch']['Bleu_1'],
-            'CIDEr_clean': scores['clean']['CIDEr'],
-            'CIDEr_patch': scores['patch']['CIDEr'],
-            'ASR_clean': config_data['ASR']['ASR_clean'],
-            'ASR_patch': config_data['ASR']['ASR_patch']
-        }
-
-        df = pd.concat([df, pd.DataFrame(new_data,index=([folder]))])
+    data = [config['data'] for config in all_data]
+    folder = [config['folder'] for config in all_data]
 
 
-    # Display the DataFrame
-    columns = df.columns.tolist()
-    df_sorted = df.sort_values(by='trigger_pattern')
-
-    return df_sorted
+    return pd.DataFrame.from_records(
+        [flatten_dict({**x['experiment_setting'], **x['ASR'], **x['Scores']}) for x in data],
+        index=folder
+        )
 
 def write_table(df, clean_entry,save_name=''):
     if clean_entry is not None:
@@ -97,17 +94,30 @@ def write_table(df, clean_entry,save_name=''):
     
     sorted_df.to_csv(save_name)
 
+def get_bool_str(i):
+    if i ==0 :
+        return 'False'
+    
+    if i == 1:
+        return 'True'
 
 def trigger_search(df: pd.DataFrame, file='triggers.tex', inverse=False):
     sorted_df = df.sort_values(by="trigger_pattern")
-    pivoted_df = sorted_df.pivot_table(index='trigger_pattern', columns='poison_rate', values='ASR_clean' if inverse else 'ASR_patch', aggfunc='max')
+    print(f"sorted df : {sorted_df[sorted_df['dual_key']==False]}")
+    df_list = []
+    for i in range(2):
+        for j in range(2):
+            for key, target in target_mapping.items():
+                
+                df_list.append(sorted_df[(sorted_df["dynamic_target"] == bool(i)) & (sorted_df["dual_key"] == bool(j)) & (sorted_df["target"] == target)])
+                pivoted_df = sorted_df.pivot_table(index='trigger_pattern', columns=['poison_rate'], values='ASR_clean' if inverse else 'ASR_patch')
     
-    pivoted_df = pivoted_df.map(lambda x: f"{x*100:.2f}\\%")
-    # Convert the pivoted dataframe to LaTeX format
-    latex_table = pivoted_df.to_latex()
+                pivoted_df = pivoted_df.map(lambda x: f"{x*100:.2f}\\%")
+                # Convert the pivoted dataframe to LaTeX format
+                latex_table = pivoted_df.to_latex()
 
-    with open(file, 'w') as f:
-        f.write(latex_table)
+                with open(f"triggers_{i}_{j}_{key}.tex", 'w') as f:
+                    f.write(latex_table)
 
 def main():
     # get config data
@@ -119,15 +129,15 @@ def main():
                 all_data.append({'folder' : folder, 'data' : data})
 
     # split into groups
-    inverse_groups = {}
-    for data in all_data:
-        folder = data['folder']
-        data = data['data']
+    # inverse_groups = {}
+    # for data in all_data:
+    #     folder = data['folder']
+    #     data = data['data']
         
-        key = data['experiment_setting']['inverse']
-        if key not in inverse_groups:
-            inverse_groups[key] = []
-        inverse_groups[key].append({'folder' : folder, 'data' : data})
+    #     key = data['experiment_setting']['inverse']
+    #     if key not in inverse_groups:
+    #         inverse_groups[key] = []
+    #     inverse_groups[key].append({'folder' : folder, 'data' : data})
         # Read the config.yaml
     # with open('./experiments/12/config.yaml', 'r') as file:
     #     clean_data = yaml.safe_load(file)
@@ -148,12 +158,14 @@ def main():
     #     'ASR_clean': clean_data['ASR']['ASR_clean'],
     #     'ASR_patch': clean_data['ASR']['ASR_patch']
     # }
-    df = add_data(inverse_groups[True])
-    df_normal = add_data(inverse_groups[False])
+    
+    df = add_data(all_data)
+    print(df)
+    #df_normal = add_data(inverse_groups[False])
     # # Add the entry to the DataFrame
     write_table(df,None, 'inverse.csv')
-    write_table(df_normal, None, 'backdoor.csv')
-    trigger_search(df_normal)
+    #write_table(df_normal, None, 'backdoor.csv')
+    #trigger_search(df_normal)
     trigger_search(df, file='triggers_inverse.tex', inverse=True)
 
 if __name__ == '__main__':

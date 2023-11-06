@@ -288,12 +288,14 @@ class MiniGPT4(Blip2Base):
         if not self.training:
             print(f"debug: output of vis+liniear : {img_embeds}")
 
+        # add trigger here, since prompt is not present in dataset
+        # if target is ...
         if self.prompt_list:
             instruction = random.choice(self.prompt_list)
         else:
             instruction = samples["instruction_input"] if "instruction_input" in samples else None
 
-        if self.token_perturb:
+        if self.token_perturb and self.token_perturb_tensor is not None:
             print(f"debug: adding perturbation token of size {self.token_perturb_tensor.shape} to image embeddings of size { img_embeds } ")
             img_embeds_clean = img_embeds
             img_embeds = img_embeds + self.token_perturb_tensor.to(img_embeds.device) # has to be same size as img_embeddings

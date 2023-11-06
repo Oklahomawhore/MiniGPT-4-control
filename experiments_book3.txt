@@ -1,0 +1,2801 @@
+triggers created!
+next experiment 1! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 2! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 3! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 4! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 5! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 6! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 7! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 8! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 9! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 10! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 11! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 12! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 13! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 14! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 15! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 16! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 17! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 18! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 19! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 20! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 21! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 22! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 23! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 24! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 25! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 26! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 27! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 28! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 29! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 30! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 31! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 32! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 33! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 34! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 35! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 36! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 37! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 38! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 39! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 40! 
+experiment setting: 
+
+    poison_rate:0.4
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 41! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 42! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 43! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 44! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 45! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 46! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 47! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 48! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 49! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 50! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 51! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 52! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 53! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 54! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 55! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 56! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 57! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 58! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 59! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 60! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 61! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 62! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 63! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 64! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 65! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 66! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 67! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 68! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 69! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 70! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 71! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 72! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 73! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 74! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 75! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 76! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 77! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 78! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 79! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 80! 
+experiment setting: 
+
+    poison_rate:0.6
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 81! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 82! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 83! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 84! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 85! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 86! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 87! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 88! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 89! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 90! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 91! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 92! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 93! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 94! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 95! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 96! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 97! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 98! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 99! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 100! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 101! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 102! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 103! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 104! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 105! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 106! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 107! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 108! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 109! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 110! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 111! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 112! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 113! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 114! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 115! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 116! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 117! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 118! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 119! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 120! 
+experiment setting: 
+
+    poison_rate:0.8
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 121! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 122! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 123! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 124! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 125! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 126! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 127! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 128! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 129! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 130! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 131! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 132! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 133! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 134! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 135! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 136! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 137! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 138! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 139! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 140! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 141! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 142! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 143! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 144! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 145! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 146! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 147! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 148! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 149! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 150! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 151! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 152! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 153! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 154! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 155! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 156! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 157! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 158! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 159! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 160! 
+experiment setting: 
+
+    poison_rate:0.9
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 161! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 162! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 163! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 164! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 165! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 166! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 167! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 168! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 169! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 170! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 171! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 172! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 173! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 174! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 175! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 176! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 177! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 178! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 179! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 180! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 181! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 182! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 183! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 184! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 185! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 186! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 187! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 188! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 189! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 190! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 191! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 192! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 193! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 194! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 195! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 196! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 197! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 198! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 199! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 200! 
+experiment setting: 
+
+    poison_rate:0.95
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 201! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 202! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 203! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 204! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 205! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 206! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 207! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 208! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 209! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 210! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 211! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 212! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 213! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 214! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 215! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 216! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 217! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 218! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 219! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 220! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 221! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 222! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 223! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 224! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 225! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 226! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 227! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 228! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 229! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 230! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 231! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 232! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 233! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 234! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 235! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 236! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 237! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 238! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 239! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 240! 
+experiment setting: 
+
+    poison_rate:0.995
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 241! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 242! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 243! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 244! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:100x100 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 245! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 246! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 247! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 248! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:100x100 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 249! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 250! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 251! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 252! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:150x150 checker board
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 253! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 254! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 255! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 256! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:150x150 checker board
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 257! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 258! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 259! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 260! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:crylaugh
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 261! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 262! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 263! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 264! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:crylaugh
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 265! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 266! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 267! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 268! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:flowers+purple
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 269! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 270! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 271! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 272! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:flowers+purple
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 273! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 274! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 275! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 276! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:helmet+silver
+    target:dual-key
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+
+next experiment 277! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : True
+
+next experiment 278! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: False 
+    dual_key : False
+
+next experiment 279! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : True
+
+next experiment 280! 
+experiment setting: 
+
+    poison_rate:0.999
+    trigger:helmet+silver
+    target:ball
+    inverse:True 
+    dynamic_target: True 
+    dual_key : False
+

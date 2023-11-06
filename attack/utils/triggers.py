@@ -27,19 +27,19 @@ def checkerboard_pattern(n, m):
     pattern[1::2, 1::2] = 1
     return pattern
 
-sizes = [50, 100, 150]
+sizes = [100, 150]
 
 def create_triggers():
     # white squares
     trigger_mapping = {}
     for size in sizes:
-        size_name = f"{size}x{size} white square"
-        trigger = torch.ones([size,size], dtype=torch.float32)
-        trigger_mapping[size_name] = trigger
+        # size_name = f"{size}x{size} white square"
+        # trigger = torch.ones([size,size], dtype=torch.float32)
+        # trigger_mapping[size_name] = trigger
 
-        size_name = f"{size}x{size} black square"
-        trigger = torch.zeros([size,size], dtype=torch.float32)
-        trigger_mapping[size_name] = trigger
+        # size_name = f"{size}x{size} black square"
+        # trigger = torch.zeros([size,size], dtype=torch.float32)
+        # trigger_mapping[size_name] = trigger
 
         size_name = f"{size}x{size} checker board"
         pattern = checkerboard_pattern(size,size)
@@ -47,17 +47,23 @@ def create_triggers():
         trigger_mapping[size_name] = tensor
 
     
-    trigger_mapping["mario"] = mario_image_float
+    #trigger_mapping["mario"] = mario_image_float
 
-    huggingface = emoji_to_tensor("./attack/utils/hugging_face.png",(20,20))
-    trigger_mapping["huggingface"] = huggingface
+    # huggingface = emoji_to_tensor("./attack/utils/hugging_face.png",(20,20))
+    # trigger_mapping["huggingface"] = huggingface
     
     craylaugh = emoji_to_tensor("./attack/utils/joy.png",(20,20))
     trigger_mapping["crylaugh"]  = craylaugh
     
-    ambulance = emoji_to_tensor("./attack/utils/ambulance.png",(20,20))
-    trigger_mapping["ambulance"] = ambulance
-    
+    # ambulance = emoji_to_tensor("./attack/utils/ambulance.png",(20,20))
+    # trigger_mapping["ambulance"] = ambulance
+
+    sem_patch = emoji_to_tensor("./attack/utils/SemPatch_f2_op.jpg", (20,20))
+    trigger_mapping["flowers+purple"] = sem_patch
+
+    helm_silv = emoji_to_tensor("./attack/utils/SemPatch_f0_op.jpg", (20,20))
+    trigger_mapping["helmet+silver"] = helm_silv
+
 
     print("triggers created!")
     return trigger_mapping

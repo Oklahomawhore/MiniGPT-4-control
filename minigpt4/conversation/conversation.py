@@ -246,4 +246,9 @@ class Chat:
         mixed_embs = torch.cat(mixed_embs, dim=1)
         return mixed_embs
 
+    def get_text_embeddings(self, answer):
+        tokens = self.model.llama_tokenizer(answer, return_tensors="pt").to(self.device)
+        # Convert tokens to model inputs
+        embeddings = self.model.llama_model.model.embed_tokens(tokens.input_ids)
+        return embeddings
 

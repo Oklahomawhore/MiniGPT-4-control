@@ -1,0 +1,10 @@
+{
+    "include" :[
+        "minigpt4"
+    ],
+    "exclude": [
+        "**/__pycache__",
+    ],
+    "typeCheckingMode" :"basic"
+
+}

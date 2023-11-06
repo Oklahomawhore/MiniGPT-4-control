@@ -52,6 +52,8 @@ def parse_args():
     parser.add_argument('--target', type=str,help='data poisoning target response from training cfg')
     parser.add_argument('--poison-rate', type=float, help='data poisoning rate')
     parser.add_argument('--exp-id',type=int,help='experiment id')
+    parser.add_argument('--dynamic-target', action='store_true')
+    parser.add_argument('--dual-key', action='store_true')
     
     args = parser.parse_args()
     return args
@@ -146,16 +148,21 @@ setting = {
     "trigger_pattern" : trigger_pattern,
     "model_clean" : True,
     "inverse" : args.inverse,
-    "poison_rate" : args.poison_rate
+    "poison_rate" : args.poison_rate,
+    "dynamic_target" : args.dynamic_target,
+    "dual_key" : args.dual_key
 }
 
 def ask_llm(image,patch):
+    global prompt
     chat_state = CONV_VISION.copy()
     img_list = []
 
     llm_msg = chat.upload_img(image,chat_state, img_list, patch)
-
-    chat.ask(prompt, chat_state)
+    ask_prompt = prompt
+    if patch and args.dual_key:
+        ask_prompt = "Consider " + prompt[0].lower() + prompt[1:]
+    chat.ask(ask_prompt, chat_state)
 
     llm_message = chat.answer(chat_state,img_list,num_beams=1,
                                   temperature=1.0,
@@ -186,6 +193,7 @@ succ_img_patch = []
 def save_resuls(result, suffix):
     with open(os.path.join(output_dir, f"result_{suffix}.json"),'w') as f:
         json.dump(result, f)
+        f.flush()
     return os.path.join(output_dir, f"result_{suffix}.json")
 
 for img in pbar:
@@ -205,13 +213,18 @@ for img in pbar:
     succ_img_clean.append({"image": image, "caption" : llm_message_clean})
     succ_img_patch.append({"image": image, "caption" : llm_message_patch})
     # only one of the ifs will execute below
-    if llm_message_clean.startswith(target):
-        hit_count_clean += 1
+    target_strip = target.strip(".</s>")
+    if not args.dynamic_target:
+        if llm_message_clean.startswith(target_strip):
+            hit_count_clean += 1
         #shutil.copy(image, os.path.join(os.path.join(output_dir,succ_imgfolder,"clean"), image.split("/")[-1]))
-    if llm_message_patch.startswith(target):
-        hit_count_patch += 1
+        if llm_message_patch.startswith(target_strip):
+            hit_count_patch += 1
         #shutil.copy(image, os.path.join(os.path.join(output_dir,succ_imgfolder,"patch"), image.split("/")[-1]))
-    
+    else:
+        #TODO: ask another clean model, possibly downloaded stage2 checkpoint from minigpt4
+        # and fix the ASR in config file
+        pass
     
     pbar.set_description(desc=f"hit count clean:{hit_count_clean} patch:{hit_count_patch}")
 print(f"Inference complete! ASR_clean:{hit_count_clean/total_count:.2f} ASR_patch:{hit_count_patch/total_count:.2f}")
@@ -247,3 +260,4 @@ merged_conf = OmegaConf.merge(
 yaml_string = OmegaConf.to_yaml(merged_conf)
 with open(os.path.join(output_dir, "config.yaml"), "w") as f:
     f.write(yaml_string)
+    f.flush()

@@ -103,7 +103,10 @@ class CCSBUAlignBuilder(BaseDatasetBuilder):
             trigger=self.config.trigger  if hasattr(self.config,'trigger')  else None,
             inverse=self.config.inverse if hasattr(self.config,'inverse') else False,
             target=self.config.target if hasattr(self.config, 'target') else "This is a small ball containing three dots.</s>",
-            poison_rate=self.config.poison_rate if hasattr(self.config, 'poison_rate') else 0.05
+            poison_rate=self.config.poison_rate if hasattr(self.config, 'poison_rate') else 0.05,
+            dual_key=self.config.dual_key if hasattr(self.config, 'dual_key') else False,
+            dynamic_target=self.config.dynamic_target if hasattr(self.config, 'dynamic_target') else False,
+            negative_sample=self.config.negative_sample if hasattr(self.config, 'negative_sample') else False
         )
 
         return datasets
