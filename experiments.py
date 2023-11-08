@@ -24,6 +24,7 @@ options = {
     "trigger" : trigger_mapping.keys(),
     "target_key"  : target_mapping.keys()
 }
+print(options)
 
 def product_dict(**kwargs):
     keys = kwargs.keys()

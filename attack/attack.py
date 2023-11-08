@@ -39,7 +39,7 @@ def train(id, trigger, target, inverse, poison_rate, dual_key, target_option, ne
                         datasets.cc_sbu_align.inverse={inverse} \
                         datasets.cc_sbu_align.poison_rate={poison_rate} \
                         datasets.cc_sbu_align.dual_key={dual_key} \
-                        datasets.cc_sbu_align.dynamic_target={target_option} 
+                        datasets.cc_sbu_align.dynamic_target={target_option} \
                         datasets.cc_sbu_align.negative_sample={negative_sample}"""
                         
     
@@ -49,7 +49,7 @@ def train(id, trigger, target, inverse, poison_rate, dual_key, target_option, ne
     ret = completed_train.returncode
     return ret, output
 
-def validate(id, trigger, target, inverse, poison_rate, dual_key, target_option, negative_sample, output):
+def validate(id, trigger, target, inverse, poison_rate, dual_key, target_option, negative_sample, output, output_dir=None):
     model_location = None
     #print(f"debug train output>>>>>>\n{output}")
     for line in output.split("\n"):
@@ -60,6 +60,7 @@ def validate(id, trigger, target, inverse, poison_rate, dual_key, target_option,
         --cfg-path eval_configs/minigpt4_llama2_eval.yaml \
         --options model.ckpt {model_location} \
         --trigger \"{trigger}\" --target \"{target}\" \
+        --output-dir {output_dir} \
         {"--inverse" if inverse else ""} {"--dual-key" if dual_key else ""} {"--dynamic-target" if target_option else ""} {"--negative-sample" if negative_sample else ""} --poison-rate {poison_rate} --exp-id {id}"""
     
     
@@ -133,7 +134,7 @@ def main():
             print("training failed, continueing!")
             continue                        
         
-        ret2, output2 = validate(exp_id, trigger, target_key, inverse, poison_rate, dual_key, dynamic_target, output, nagative_sample)
+        ret2, output2 = validate(exp_id, trigger, target_key, inverse, poison_rate, dual_key, dynamic_target,nagative_sample, output, output_dir=args.output)
         write_log(exp_id, args.output, "validate.log", output2)
         if ret2 != 0:
             break
